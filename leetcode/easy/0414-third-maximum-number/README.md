@@ -62,35 +62,37 @@ The third distinct maximum is 1.
 **Language:** Java  
 **Runtime:** 1 ms (beats 98.75%)  
 **Memory:** 44.7 MB (beats 77.04%)  
-**Submitted:** 2026-10-03T19:28:07.351Z  
+**Submitted:** 2026-10-03T19:33:05.094Z  
 
 ```java
 class Solution {
     public int thirdMax(int[] nums) {
+
         long max = Long.MIN_VALUE;
         long secondMax = Long.MIN_VALUE;
         long thirdMax = Long.MIN_VALUE;
 
-        for (int num : nums) {
-            long val = num;
-
-            if (val == max || val == secondMax || val == thirdMax) {
-                continue;
-            }
-
-            if (val > max) {
+        for(int num : nums) {
+            if(max < num) {
                 thirdMax = secondMax;
                 secondMax = max;
-                max = val;
-            } else if (val > secondMax) {
+                max = num;
+            }
+
+            else if(secondMax < num && num != max) {
                 thirdMax = secondMax;
-                secondMax = val;
-            } else if (val > thirdMax) {
-                thirdMax = val;
+                secondMax = num;
+            }
+
+            else if(thirdMax < num && num != secondMax && num != max) {
+                thirdMax = num;
             }
         }
 
-        return thirdMax == Long.MIN_VALUE ? (int) max : (int) thirdMax;
+        if(thirdMax == Long.MIN_VALUE) {
+            return (int)max;
+        }
+        return (int)thirdMax;
     }
 }
 ```
