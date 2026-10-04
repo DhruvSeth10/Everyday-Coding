@@ -4,14 +4,13 @@ class Solution {
         int max = 0;
 
         for (int i=0; i<nums.length; i++) {
-            if (nums[i] == 1) {
+            if (nums[i] == 1)
                 current++;
-                if (current > max)
-                    max = current;
-            }
-            else
+            else {
+                max=Math.max(max,current);
                 current = 0;
+            }
         }
-        return max;
+        return max=Math.max(max,current);
     }
 }
