@@ -39,15 +39,13 @@ Output: false
 
 **Language:** Java  
 **Runtime:** 1 ms (beats 98.64%)  
-**Memory:** 47.8 MB (beats 36.78%)  
-**Submitted:** 2026-10-05T14:18:59.776Z  
+**Memory:** 47.7 MB (beats 75.77%)  
+**Submitted:** 2026-10-05T14:20:06.479Z  
 
 ```java
 class Solution {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
         int k = flowerbed.length;
-        if (n == 0)
-            return true;
         for (int i=0; i<k; i++) {
             if ((flowerbed[i] == 0) && (i==0 || flowerbed[i-1] == 0) && (i==k-1 || flowerbed[i+1] == 0)) {
                 flowerbed[i] = 1;
@@ -57,7 +55,7 @@ class Solution {
                     return true;
             }
         }
-        return false;   
+        return n<=0;   
     }
 }
 ```
