@@ -26,30 +26,29 @@ Explanation: As 21191 is a prime number, it has only 2 factors(1 and the number 
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-10-20T10:48:37.344Z  
+**Submitted:** 2026-10-20T13:42:26.213Z  
 
 ```java
 class Solution {
     public ArrayList<Integer> getDivisors(int n) {
+        
         ArrayList<Integer> divs = new ArrayList<>();
-
-        for (int i = 1; i <= n / i; i++) {
-            if (n % i == 0) {
+        
+        for (int i=1; i<=n/i; i++) {
+            if (n%i == 0)
                 divs.add(i);
-            }
         }
-
+        
         int size = divs.size();
-
-        for (int i = size - 1; i >= 0; i--) {
+        
+        for (int i=size-1; i>=0; i--) {
             int divisor = divs.get(i);
-            int pair = n / divisor;
-
-            if (divisor != pair) {
+            int pair = n/divisor;
+            
+            if (divisor != pair)
                 divs.add(pair);
-            }
         }
-
+        
         return divs;
     }
 }
