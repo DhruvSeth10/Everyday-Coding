@@ -50,45 +50,37 @@ Explanation: 7 is the only lucky number since it is the minimum in its row and t
 ## Solution
 
 **Language:** Java  
-**Runtime:** 2 ms (beats 95.27%)  
-**Memory:** 47 MB (beats 52.04%)  
-**Submitted:** 2026-10-06T11:27:11.321Z  
+**Runtime:** 2 ms (beats 95.92%)  
+**Memory:** 46.1 MB (beats 99.77%)  
+**Submitted:** 2026-10-21T10:23:57.041Z  
 
 ```java
 class Solution {
     public List<Integer> luckyNumbers (int[][] matrix) {
 
         List<Integer> ans = new ArrayList<>();
+        int m = matrix.length;
+        int n = matrix[0].length;
 
-        int rows = matrix.length;
-        int cols = matrix[0].length;
-
-        for (int i = 0; i < rows; i++) {
-
+        for (int i=0; i<m; i++) {
             int minCol = 0;
-
-            for (int j = 1; j < cols; j++) {
-                if (matrix[i][j] < matrix[i][minCol]) {
-                    minCol = j;
-                }
+            for (int j=1; j<n; j++) {
+                if (matrix[i][minCol] > matrix[i][j])
+                    minCol=j;
             }
-
             int min = matrix[i][minCol];
+            boolean lucky = true;
 
-            boolean isLucky = true;
-
-            for (int k = 0; k < rows; k++) {
+            for (int k=0; k<m; k++) {
                 if (matrix[k][minCol] > min) {
-                    isLucky = false;
+                    lucky = false;
                     break;
                 }
             }
 
-            if (isLucky) {
+            if (lucky)
                 ans.add(min);
-            }
         }
-
         return ans;
     }
 }
