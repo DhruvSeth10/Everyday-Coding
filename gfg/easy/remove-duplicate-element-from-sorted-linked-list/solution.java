@@ -17,7 +17,6 @@ class Solution {
         while (curr != null && curr.next != null) {
 
             if (curr.data == curr.next.data) {
-                Node duplicate = curr.next;
                 curr.next = curr.next.next;
             }
             else {
