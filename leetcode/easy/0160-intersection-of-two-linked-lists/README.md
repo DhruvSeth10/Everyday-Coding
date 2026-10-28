@@ -77,9 +77,9 @@ Explanation: The two lists do not intersect, so return null.
 ## Solution
 
 **Language:** Java  
-**Runtime:** 1 ms (beats 99.98%)  
-**Memory:** 52.1 MB (beats 96.06%)  
-**Submitted:** 2026-10-28T10:50:23.344Z  
+**Runtime:** 2 ms (beats 50.09%)  
+**Memory:** 52.4 MB (beats 84.29%)  
+**Submitted:** 2026-10-28T11:11:30.692Z  
 
 ```java
 /**
@@ -96,13 +96,29 @@ Explanation: The two lists do not intersect, so return null.
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 
-        if (headA == null || headB == null)
-            return null;
 
         ListNode tempa = headA;
         ListNode tempb = headB;
-        int la = 1;
-        int lb = 1;
+        int la = 1, lb = 1;
+
+        while (tempa != tempb) {
+            if (tempa == null)
+                tempa = headB;
+            else
+                tempa = tempa.next;
+
+            if (tempb == null)
+                tempb = headA;
+            else 
+                tempb = tempb.next;
+        }
+        return tempa;
+
+
+/*
+        if (headA == null || headB == null)
+            return null;
+
         while (tempa != null) {
             la++;
             tempa = tempa.next;
@@ -135,6 +151,7 @@ public class Solution {
             tempb = tempb.next;
         }
         return null;
+*/
     }
 }
 ```
