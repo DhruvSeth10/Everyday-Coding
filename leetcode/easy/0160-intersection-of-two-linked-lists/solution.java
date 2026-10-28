@@ -12,13 +12,29 @@
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 
-        if (headA == null || headB == null)
-            return null;
 
         ListNode tempa = headA;
         ListNode tempb = headB;
-        int la = 1;
-        int lb = 1;
+        int la = 1, lb = 1;
+
+        while (tempa != tempb) {
+            if (tempa == null)
+                tempa = headB;
+            else
+                tempa = tempa.next;
+
+            if (tempb == null)
+                tempb = headA;
+            else 
+                tempb = tempb.next;
+        }
+        return tempa;
+
+
+/*
+        if (headA == null || headB == null)
+            return null;
+
         while (tempa != null) {
             la++;
             tempa = tempa.next;
@@ -51,5 +67,6 @@ public class Solution {
             tempb = tempb.next;
         }
         return null;
+*/
     }
 }
